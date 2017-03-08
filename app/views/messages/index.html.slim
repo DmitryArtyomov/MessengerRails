@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-4
+      .card
+        ul.list-group.list-group-flush
+          - @users.each do |u|
+            = link_to u.username, '#', class: "list-group-item list-group-item-action"
