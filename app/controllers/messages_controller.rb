@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+    raise ActiveRecord::RecordNotFound unless User.exists(params[:id])
     @users = current_user.all_but_this
     @messages = current_user.conversation_with(params[:id])
     @messages.where(receiver_id: current_user.id).update_all("read = true")

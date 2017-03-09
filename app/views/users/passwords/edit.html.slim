@@ -5,16 +5,15 @@
     = f.hidden_field :reset_password_token
     .field
       = f.label :password, "New password"
-      br
       - if @minimum_password_length
         em
-          | (#{@minimum_password_length} characters minimum)
+          |  (#{@minimum_password_length} characters minimum)
         br
       = f.password_field :password, autofocus: true, autocomplete: "off"
-    .field
+    .field.mt-3
       = f.label :password_confirmation, "Confirm new password"
       br
       = f.password_field :password_confirmation, autocomplete: "off"
-    .actions.mb-4
+    .actions.my-4
       = f.submit "Change my password"
   = render "users/shared/links"

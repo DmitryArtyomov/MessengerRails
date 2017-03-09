@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def unread_messages(user_id)
     self.received_messages.where(sender: user_id).where(read: false).count
   end
+
+  def self.exists(user_id)
+    !User.where(id: user_id).empty?
+  end
 end
