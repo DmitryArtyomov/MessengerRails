@@ -3,4 +3,4 @@
   .d-flex.w-100.justify-content-between
     span.font-weight-bold = (fa_icon (outgoing ? 'chevron-right' : 'chevron-left')) + ' ' + message.sender.username
     span = message.created_at.getlocal('+03:00').strftime('%d/%m/%Y %H:%M:%S')
-  = message.text
+  .message-text = message.text

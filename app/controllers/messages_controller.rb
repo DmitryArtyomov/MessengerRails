@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
-    @users = User.where.not(id: current_user)
+    @users = current_user.all_but_this
+    current_user.conversation_with(params[:id])
   end
 
   def create
@@ -23,8 +24,8 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @users = User.where.not(id: current_user)
-    @messages = Message.where("sender_id = #{current_user.id} AND receiver_id = #{params[:id]} OR sender_id = #{params[:id]} AND receiver_id = #{current_user.id}").order(created_at: :asc)
+    @users = current_user.all_but_this
+    @messages = current_user.conversation_with(params[:id])
     @messages.where(receiver_id: current_user.id).update_all("read = true")
   end
 end

@@ -1,7 +1,10 @@
-.col-4
-  .card
-    ul.list-group.list-group-flush
-      - @users.each do |u|
-        = link_to(message_path(u.id), class: "list-group-item list-group-item-action justify-content-between #{'active' if params[:id] == u.id.to_s}") do
-          = u.username          
-          span.badge.badge-default.badge-pill 14
+- if @users.size > 0
+  .col-4
+    .card
+      ul.list-group.list-group-flush
+        - @users.each do |u|
+          = link_to(message_path(u.id), class: "list-group-item list-group-item-action justify-content-between #{'active' if params[:id] == u.id.to_s}") do
+            = u.username
+            - unread_count = current_user.unread_messages(u)
+            - if unread_count > 0
+              span.badge.badge-default.badge-pill = unread_count

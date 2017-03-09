@@ -2,10 +2,11 @@
   .row
     = render '/shared/users_list'
     .col-8
-      .card
-        .list-group.list-group-flush.messages
-          - @messages.each do |m|
-            = render m
+      - if @messages.size > 0
+        .card
+          .list-group.list-group-flush.messages
+            - @messages.each do |m|
+              = render m
 
       = form_for Message.new, :remote => true do |f|
         .row.message_form_row
