@@ -1,5 +1,7 @@
 .container
   .row
     .col-12.text-center
-      p.notice = notice
-      p.alert = alert
+      - if notice
+        .alert.notice = notice
+      - else
+        .alert = alert

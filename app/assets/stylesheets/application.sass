@@ -1,17 +1,22 @@
 @import "bootstrap"
 @import "font-awesome"
 
+@include media-breakpoint-down(xs)
+  .container
+    margin-left: 0
+    margin-right: 0
+
 .notice
-  color: #00FF00
+  color: #00FF00 !important
 
 .alert
   color: #FF0000
 
 .new_message
   position: sticky
-  bottom: 0
-  margin-top: 2em
-  margin-bottom: 2em
+  top: 0
+  margin-top: -2em
+  z-index: 1
 
 .form-actions
   padding-left: 15px
@@ -20,7 +25,7 @@
 .message_form_row
   display: flex
   align-items: center
-  background-color: rgba(255, 255, 255, 0.8)
+  background-color: rgba(255, 255, 255, 0.9)
   padding-top: 2em
   padding-bottom: 2em
 
@@ -30,3 +35,18 @@
 .message-text
   overflow-wrap: break-word
   word-break: break-word
+
+.incoming
+  color: red
+
+.outgoing
+  color: green
+
+.navbar-text
+  padding-top: 0.5rem
+  padding-bottom: 0.5rem
+
+.of-ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  display: inline-block

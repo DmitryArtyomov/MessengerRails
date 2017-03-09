@@ -2,15 +2,15 @@
   .row
     = render '/shared/users_list'
     .col-8
-      - if @messages.size > 0
-        .card
-          .list-group.list-group-flush.messages
-            - @messages.each do |m|
-              = render m
-
       = form_for Message.new, :remote => true do |f|
         .row.message_form_row
           .field.col
             = f.text_area :text, class: "form-control", placeholder: "Write message here...", required: true, autofocus: true
           .form-actions.col-auto
             = f.submit "Send", class: "btn btn-success"
+
+      - if @messages.size > 0
+        .card.mb-5
+          .list-group.list-group-flush.messages
+            - @messages.each do |m|
+              = render m
